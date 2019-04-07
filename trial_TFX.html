@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Trace FX for your International Payments</title>
+
+  <!-- Font Awesome Icons -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+  <!-- Plugin CSS -->
+  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+  <!-- Theme CSS - Includes Bootstrap -->
+  <link href="css/creative.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Trace FX</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="trial_TFX.html">Try Trace</a>
+          </li>
+		<li class="nav-item">
+            <a class="nav-link" href="about_TFX.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="faq_TFX.html">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact_TFX.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <header class="page-section bg-dark text-white">
+    <div class="container text-center">
+      <h2 class="mb-4">Trace your payment</h2>
+	  			<hr class="divider my-4">
+		<div class="row h-100 align-items-center justify-content-center text-center">
+		        <div class="col-lg-12 align-self-baseline">
+          <p class="text-white-75 font-weight-light mb-5">Verify what you’ve been told, understand what you’ve paid and take control of your international payments</p>
+		
+        </div>
+	  <div class="col-lg-12">
+			<form class="row" id="trace_trial" onsubmit="return false;">
+                <div class="col-md-4">
+					<div class="row">
+						<div class="col-sm-12">
+							<h6 class="mb-4">Select the currencies <br/>of your payment</h6>
+							<hr class="divider my-4">
+						</div>
+						
+						<div class="col-sm-12">
+							<select class="btn btn-light" name="debit_currency" id="debit_ccy">
+								<option  disabled selected>Debit Currency:</option>
+								<option value="EUR">EUR</option>
+								<option value="USD">USD</option>
+							</select>
+							<br/><br/>
+						</div>
+						
+						<div class="col-sm-12">
+							<select class="btn btn-light" name="credit_currency" id="credit_ccy">
+								<option  disabled selected>Credit Currency:</option>
+								<option value="GBP">GBP</option>
+								<option value="USD">USD</option>
+								<option value="CAD">CAD</option>
+								<option value="JPY">JPY</option>
+								<option value="AUD">AUD</option>
+							</select>
+						</div>
+					</div>			
+				</div>
+
+				<div class="col-md-4">
+					<div class="row">
+					
+						<div class="col-sm-12">
+							<h6 class="mb-4">Select the date and time (optional) <br/>of the payment</h6>
+							<hr class="divider my-4">
+						</div>
+						
+						<div class="form-group col-sm-12">
+							<input type="date" class="btn btn-light" id="pymnt_date" name="pymnt_date">
+							<br/>
+						</div>
+						<div class="form-group col-sm-12">
+							<input type="time" class="btn btn-light" id="pymnt_time" name="pymnt_time">
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+
+					<div class="row">	
+						<div class="col-sm-12">
+							<h6 class="mb-4">Input the rate applied to your payment <br/>& your provider (optional)</h6>
+							<hr class="divider my-4">
+						</div>					
+						<div class="form-group col-md-12">
+							<input type="text" class="btn btn-light" id="rate_applied" name="rate_applied" placeholder="Input rate">
+							<br/>
+						</div>
+						<div class="form-group col-md-12">
+							<input type="text" class="btn btn-light" id="provider" name="provider" placeholder="Input provider">
+							<br/>
+						</div>	
+					</div>
+					
+				</div>
+				<div class="col-md-12">
+					<hr class="divider my-4">
+					<input type="submit" value="Trace my payment" class="btn btn-primary btn-xl" onclick="trace_trial();">
+				</div>				
+			</form>
+		</div>
+		</div>
+    </div>
+  </header>
+
+  <!--================Screen Area =================-->
+        <section class="page-section" id="report_section" style="display:none">
+        	<div class="container">
+        		<div class="main_title" id="TraceFX_report">
+        			
+        		</div>
+				
+				</canvas><canvas id="myChart"></canvas>
+				
+				
+        	</div>
+			
+			<div id="test_text">
+				</div>
+        </section>
+        <!--================End Screen Area =================-->    
+  <!-- Services Section -->
+  <section class="page-section" id="report_explainations" style="display:none">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+            <h3 class="h4 mb-2">How we calculated the foreign exchange (FX) margin? <br/><br></h3>
+			<hr class="divider my-4">
+            <p class="text-muted mb-0">We compared the FX rate used to process your international payment (the client FX rate) with the interbank FX rate at the time that you initiated your international payment.
+			The difference is the effective FX margin that your provider applied. 
+			We express this as a percentage. 
+			FX is like any other business, whereby the provider buys at a wholesale price, applies a margin and sells to you at a retail price. 
+			Note that your provider may not have been able to buy at interbank (or, more accurately, cover the deal at interbank) which is why we refer to the ‘effective’ FX margin. 
+			But this shouldn’t matter to you. If your provider cannot access the wholesale market, find one who can.</p>
+			<br/><br/>
+        </div>
+        <div class="col-lg-12 text-center">
+            <h3 class="h4 mb-2">Why do we give you a range of possible FX margins? <br/><br></h3>
+			<hr class="divider my-4">
+            <p class="text-muted mb-0">FX rates move in real time 24 hours per day / 5.5 days per week.
+If you have only provided us with the day that you initiated your international payment,
+or some other time span such as morning on a particular date,
+we cannot compare the client FX rate with the interbank FX rate at the time that you initiated your international payment. 
+Instead, we take the highest, lowest and average interbank FX rate during that time period and give you the range of possible effective FX margins that could have been applied. 
+While this is not perfect, it does give you an idea of the margin charged and, 
+if the lowest possible effective FX margin is still more than you were quoted, you know for sure you were mis-sold and you should contact your provider and seek a refund or, 
+if you prefer, contact the regulator.</p>
+		<br/><br/>
+        </div>
+        <div class="col-lg-12 text-center">
+            <h3 class="h4 mb-2">What if you wish to know the exact FX margin?<br/><br></h3>
+			<hr class="divider my-4">
+            <p class="text-muted mb-0">If you make high value international payments or a large volume of international payments and wish to know the exact FX margin that was applied,
+							we offer a professional service designed to meet this requirement.
+							If you are interested in this, please contact us.</p>
+		<br/><br/>
+        </div>
+      </div>
+    </div>
+	
+	<div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="mt-0">Let's Get In Touch!</h2>
+          <hr class="divider my-4">
+          <p class="text-muted mb-5">Ready to start your next project with us? Send us an email and we will get back to you as soon as possible!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 mr-auto text-center">
+          <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+          <!-- Make sure to change the email address in anchor text AND the link below! -->
+          <a class="d-block" href="mailto:contact@yourwebsite.com">contact@tracefx.io</a>
+        </div>
+      </div>
+    </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-light py-5">
+    <div class="container">
+      <div class="small text-center text-muted"><a href="trace_tc.html">Terms and conditions</a> <br/> Copyright &copy; 2019 - Start Bootstrap - Modified by Trace FX </div>
+	  
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/creative.min.js"></script>
+  <script src="vendor/jquery/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+  <script src="js/trace_fx.js"></script>
+	
+</body>
+
+</html>
